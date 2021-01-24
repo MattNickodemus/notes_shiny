@@ -4,3 +4,4 @@ a-table-app
 just-a-table
 some-structure
 add-a-graph
+add-a-sidebar-and-a-picker-input

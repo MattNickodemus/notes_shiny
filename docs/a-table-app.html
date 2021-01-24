@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="sources.html"/>
-<link rel="next" href="add-a-graph.html"/>
+
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,8 +139,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="a-table-app.html"><a href="a-table-app.html#just-a-table"><i class="fa fa-check"></i><b>3.1</b> Just a table</a></li>
 <li class="chapter" data-level="3.2" data-path="a-table-app.html"><a href="a-table-app.html#some-structure"><i class="fa fa-check"></i><b>3.2</b> Some structure</a></li>
+<li class="chapter" data-level="3.3" data-path="a-table-app.html"><a href="a-table-app.html#add-a-graph"><i class="fa fa-check"></i><b>3.3</b> Add a graph!</a></li>
+<li class="chapter" data-level="3.4" data-path="a-table-app.html"><a href="a-table-app.html#add-a-sidebar-and-a-picker-input"><i class="fa fa-check"></i><b>3.4</b> Add a sidebar and a picker input</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="add-a-graph.html"><a href="add-a-graph.html"><i class="fa fa-check"></i><b>4</b> Add a graph!</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -188,10 +189,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-table-app.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(grades)</span></code></pre></div>
 <pre><code>## Rows: 1,000
 ## Columns: 4
-## $ name        &lt;chr&gt; &quot;Rhys Kessler-Schuppe&quot;, &quot;Jannie Bailey&quot;, &quot;Britt Schmitt S…
-## $ final_score &lt;chr&gt; &quot;0.84&quot;, &quot;0.92&quot;, &quot;0.93&quot;, &quot;0.99&quot;, &quot;0.96&quot;, &quot;0.95&quot;, &quot;0.94&quot;, &quot;…
-## $ section     &lt;chr&gt; &quot;09&quot;, &quot;10&quot;, &quot;01&quot;, &quot;02&quot;, &quot;01&quot;, &quot;04&quot;, &quot;07&quot;, &quot;07&quot;, &quot;08&quot;, &quot;06…
-## $ final_grade &lt;chr&gt; &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;A&quot;, &quot;F…</code></pre>
+## $ name        &lt;chr&gt; &quot;Ricki Wuckert&quot;, &quot;Mr. Dominick Corkery&quot;, &quot;Lish Doyle&quot;, &quot;D…
+## $ final_score &lt;chr&gt; &quot;0.84&quot;, &quot;0.93&quot;, &quot;0.98&quot;, &quot;0.81&quot;, &quot;0.98&quot;, &quot;0.83&quot;, &quot;0.80&quot;, &quot;…
+## $ section     &lt;chr&gt; &quot;09&quot;, &quot;01&quot;, &quot;05&quot;, &quot;03&quot;, &quot;07&quot;, &quot;04&quot;, &quot;05&quot;, &quot;09&quot;, &quot;02&quot;, &quot;04…
+## $ final_grade &lt;chr&gt; &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;F&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;A…</code></pre>
 <p>The basic framework for a Shiny app looks like this</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-table-app.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb4-2"><a href="a-table-app.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -267,14 +268,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </br>
 <img src="images/03_table_app/basic_table_04.png" /></p>
 </div>
+<div id="add-a-graph" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Add a graph!</h2>
+<p><img src="images/03_table_app/basic_table_05.png" /></p>
+<p>Next we are going to add a graph to our app. We will make a basic bar graph showing the distribution of grades in the course. Here is the <code>{ggplot2}</code> code we will use to make the graph.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="a-table-app.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(grades, <span class="fu">aes</span>(final_grade, <span class="at">fill =</span> final_grade)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">stat =</span> <span class="st">&#39;count&#39;</span>)</span></code></pre></div>
+<p><img src="notes_shiny_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>The code for the app will look like this</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="a-table-app.html#cb10-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb10-2"><a href="a-table-app.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">br</span>(),</span>
+<span id="cb10-3"><a href="a-table-app.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb10-4"><a href="a-table-app.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h3</span>(<span class="st">&quot;My table app&quot;</span>),</span>
+<span id="cb10-5"><a href="a-table-app.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    lorem<span class="sc">::</span><span class="fu">ipsum</span>(<span class="at">paragraphs =</span> <span class="dv">1</span>, <span class="at">sentences =</span> <span class="dv">6</span>)</span>
+<span id="cb10-6"><a href="a-table-app.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb10-7"><a href="a-table-app.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb10-8"><a href="a-table-app.html#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(<span class="dv">10</span>, <span class="at">offset =</span> <span class="dv">1</span>,</span>
+<span id="cb10-9"><a href="a-table-app.html#cb10-9" aria-hidden="true" tabindex="-1"></a>      DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&#39;table&#39;</span>),</span>
+<span id="cb10-10"><a href="a-table-app.html#cb10-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">plotOutput</span>(<span class="st">&#39;plot&#39;</span>) <span class="co"># &lt;====== Add the plot to the UI, in the column element</span></span>
+<span id="cb10-11"><a href="a-table-app.html#cb10-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-12"><a href="a-table-app.html#cb10-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-13"><a href="a-table-app.html#cb10-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-14"><a href="a-table-app.html#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="a-table-app.html#cb10-15" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb10-16"><a href="a-table-app.html#cb10-16" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
+<span id="cb10-17"><a href="a-table-app.html#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(grades)</span>
+<span id="cb10-18"><a href="a-table-app.html#cb10-18" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-19"><a href="a-table-app.html#cb10-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-20"><a href="a-table-app.html#cb10-20" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({   <span class="co"># &lt;========== Add new element to the output list</span></span>
+<span id="cb10-21"><a href="a-table-app.html#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(grades, <span class="fu">aes</span>(final_grade, <span class="at">fill =</span> final_grade)) <span class="sc">+</span> </span>
+<span id="cb10-22"><a href="a-table-app.html#cb10-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">stat =</span> <span class="st">&#39;count&#39;</span>)</span>
+<span id="cb10-23"><a href="a-table-app.html#cb10-23" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-24"><a href="a-table-app.html#cb10-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></br>
+</br>
+<img src="images/03_table_app/basic_table_06.png" /></p>
+</div>
+<div id="add-a-sidebar-and-a-picker-input" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Add a sidebar and a picker input</h2>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="sources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="add-a-graph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
