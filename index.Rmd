@@ -1,0 +1,13 @@
+--- 
+title: "My Shiny Notes"
+author: "Matt Nickodemus"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+description: "These are my notes on Shiny."
+---
+
+# Disclaimer
+
+These are my notes on Shiny. The thoughts, code, drawings, and notes are copied from several other sources, so **nothing here should be attributed to me**. This is just my notebook where I collect things I like as I learn. 
