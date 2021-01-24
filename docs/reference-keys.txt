@@ -1,2 +1,6 @@
 disclaimer
 sources
+a-table-app
+just-a-table
+some-structure
+add-a-graph

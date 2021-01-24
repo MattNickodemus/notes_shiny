@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 A table app | My Shiny Notes</title>
+  <meta name="description" content="These are my notes on Shiny." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 A table app | My Shiny Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="These are my notes on Shiny." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 A table app | My Shiny Notes" />
+  
+  <meta name="twitter:description" content="These are my notes on Shiny." />
+  
+
+<meta name="author" content="Matt Nickodemus" />
+
+
+<meta name="date" content="2021-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sources.html"/>
+<link rel="next" href="add-a-graph.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">My Shiny Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Disclaimer</a></li>
+<li class="chapter" data-level="2" data-path="sources.html"><a href="sources.html"><i class="fa fa-check"></i><b>2</b> Sources</a></li>
+<li class="chapter" data-level="3" data-path="a-table-app.html"><a href="a-table-app.html"><i class="fa fa-check"></i><b>3</b> A table app</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="a-table-app.html"><a href="a-table-app.html#just-a-table"><i class="fa fa-check"></i><b>3.1</b> Just a table</a></li>
+<li class="chapter" data-level="3.2" data-path="a-table-app.html"><a href="a-table-app.html#some-structure"><i class="fa fa-check"></i><b>3.2</b> Some structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="add-a-graph.html"><a href="add-a-graph.html"><i class="fa fa-check"></i><b>4</b> Add a graph!</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Shiny Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-table-app" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> A table app</h1>
+<p>Our first app will be a basic app with a table, a graph, and a single drop down selector. To build this we will use the <code>{DT}</code> library <a href="https://rstudio.github.io/DT/" class="uri">https://rstudio.github.io/DT/</a>.</p>
+<div id="just-a-table" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Just a table</h2>
+<p>Lets start with building a data set to visualize. The data set we are going to build is the grade data for a course with 10 sections.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-table-app.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="a-table-app.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(charlatan)</span>
+<span id="cb1-3"><a href="a-table-app.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-4"><a href="a-table-app.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="a-table-app.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="a-table-app.html#cb1-6" aria-hidden="true" tabindex="-1"></a>grades <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">ch_name</span>(<span class="dv">1000</span>), </span>
+<span id="cb1-7"><a href="a-table-app.html#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">final_score =</span> <span class="fu">number</span>(<span class="fu">rbeta</span>(<span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">1</span>),<span class="at">accuracy =</span> .<span class="dv">01</span>),</span>
+<span id="cb1-8"><a href="a-table-app.html#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">section =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-9"><a href="a-table-app.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-10"><a href="a-table-app.html#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">final_grade =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-11"><a href="a-table-app.html#cb1-11" aria-hidden="true" tabindex="-1"></a>      final_score <span class="sc">&lt;</span>  .<span class="dv">60</span>                     <span class="sc">~</span> <span class="st">&#39;F&#39;</span>,</span>
+<span id="cb1-12"><a href="a-table-app.html#cb1-12" aria-hidden="true" tabindex="-1"></a>      final_score <span class="sc">&gt;=</span> .<span class="dv">60</span> <span class="sc">&amp;</span> final_score <span class="sc">&lt;</span> .<span class="dv">70</span> <span class="sc">~</span> <span class="st">&#39;D&#39;</span>,</span>
+<span id="cb1-13"><a href="a-table-app.html#cb1-13" aria-hidden="true" tabindex="-1"></a>      final_score <span class="sc">&gt;=</span> .<span class="dv">70</span> <span class="sc">&amp;</span> final_score <span class="sc">&lt;</span> .<span class="dv">80</span> <span class="sc">~</span> <span class="st">&#39;C&#39;</span>,</span>
+<span id="cb1-14"><a href="a-table-app.html#cb1-14" aria-hidden="true" tabindex="-1"></a>      final_score <span class="sc">&gt;=</span> .<span class="dv">80</span> <span class="sc">&amp;</span> final_score <span class="sc">&lt;</span> .<span class="dv">90</span> <span class="sc">~</span> <span class="st">&#39;B&#39;</span>,</span>
+<span id="cb1-15"><a href="a-table-app.html#cb1-15" aria-hidden="true" tabindex="-1"></a>      final_score <span class="sc">&gt;=</span> .<span class="dv">90</span>                     <span class="sc">~</span> <span class="st">&#39;A&#39;</span></span>
+<span id="cb1-16"><a href="a-table-app.html#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-17"><a href="a-table-app.html#cb1-17" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-18"><a href="a-table-app.html#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">str_pad</span>(section, <span class="dv">2</span>, <span class="st">&#39;left&#39;</span>, <span class="st">&#39;0&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-table-app.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(grades)</span></code></pre></div>
+<pre><code>## Rows: 1,000
+## Columns: 4
+## $ name        &lt;chr&gt; &quot;Rhys Kessler-Schuppe&quot;, &quot;Jannie Bailey&quot;, &quot;Britt Schmitt S…
+## $ final_score &lt;chr&gt; &quot;0.84&quot;, &quot;0.92&quot;, &quot;0.93&quot;, &quot;0.99&quot;, &quot;0.96&quot;, &quot;0.95&quot;, &quot;0.94&quot;, &quot;…
+## $ section     &lt;chr&gt; &quot;09&quot;, &quot;10&quot;, &quot;01&quot;, &quot;02&quot;, &quot;01&quot;, &quot;04&quot;, &quot;07&quot;, &quot;07&quot;, &quot;08&quot;, &quot;06…
+## $ final_grade &lt;chr&gt; &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;A&quot;, &quot;F…</code></pre>
+<p>The basic framework for a Shiny app looks like this</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-table-app.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb4-2"><a href="a-table-app.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="a-table-app.html#cb4-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>( )</span>
+<span id="cb4-4"><a href="a-table-app.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="a-table-app.html#cb4-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) { }</span>
+<span id="cb4-6"><a href="a-table-app.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="a-table-app.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>Let’s first just throw a basic data table into the app.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-table-app.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb5-2"><a href="a-table-app.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb5-3"><a href="a-table-app.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="a-table-app.html#cb5-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb5-5"><a href="a-table-app.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb5-6"><a href="a-table-app.html#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="a-table-app.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="a-table-app.html#cb5-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb5-9"><a href="a-table-app.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
+<span id="cb5-10"><a href="a-table-app.html#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(grades)</span>
+<span id="cb5-11"><a href="a-table-app.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-12"><a href="a-table-app.html#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-13"><a href="a-table-app.html#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="a-table-app.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>This gives us an app looking like this.
+</br>
+</br>
+<img src="images/03_table_app/basic_table_01.png" /></p>
+<p>Which is great, but we can a lot better with just a few more lines of code.</p>
+<p><em>For the next few steps, I will just include the relevant portions of the app script.</em></p>
+</div>
+<div id="some-structure" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Some structure</h2>
+<p>First we will add a well panel with a nice title and a paragraph that explains what our application does. When I am first building an app, I often fill this space with the <code>{lorem}</code> package.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="a-table-app.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb6-2"><a href="a-table-app.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(                                       <span class="co"># New lines</span></span>
+<span id="cb6-3"><a href="a-table-app.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h3</span>(<span class="st">&quot;My table app&quot;</span>),                            <span class="co"># </span></span>
+<span id="cb6-4"><a href="a-table-app.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    lorem<span class="sc">::</span><span class="fu">ipsum</span>(<span class="at">paragraphs =</span> <span class="dv">1</span>, <span class="at">sentences =</span> <span class="dv">6</span>)    <span class="co">#</span></span>
+<span id="cb6-5"><a href="a-table-app.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb6-6"><a href="a-table-app.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb6-7"><a href="a-table-app.html#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p></br>
+</br>
+<img src="images/03_table_app/basic_table_02.png" /></p>
+<p>Next we are going to center the table. We do this by creating a column call to contain the table. Our column element which contains the table will be 10 wide, and we will offset it by 1.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="a-table-app.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb7-2"><a href="a-table-app.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb7-3"><a href="a-table-app.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h3</span>(<span class="st">&quot;My table app&quot;</span>),</span>
+<span id="cb7-4"><a href="a-table-app.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    lorem<span class="sc">::</span><span class="fu">ipsum</span>(<span class="at">paragraphs =</span> <span class="dv">1</span>, <span class="at">sentences =</span> <span class="dv">6</span>)</span>
+<span id="cb7-5"><a href="a-table-app.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb7-6"><a href="a-table-app.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb7-7"><a href="a-table-app.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(<span class="dv">10</span>, <span class="at">offset =</span> <span class="dv">1</span>, <span class="co"># &lt;==================================================</span></span>
+<span id="cb7-8"><a href="a-table-app.html#cb7-8" aria-hidden="true" tabindex="-1"></a>      DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb7-9"><a href="a-table-app.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-10"><a href="a-table-app.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-11"><a href="a-table-app.html#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p></br>
+</br>
+<img src="images/03_table_app/basic_table_03.png" /></p>
+<p>We can also use custom CSS in the column element.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="a-table-app.html#cb8-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb8-2"><a href="a-table-app.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">br</span>(),</span>
+<span id="cb8-3"><a href="a-table-app.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb8-4"><a href="a-table-app.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h3</span>(<span class="st">&quot;My table app&quot;</span>),</span>
+<span id="cb8-5"><a href="a-table-app.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    lorem<span class="sc">::</span><span class="fu">ipsum</span>(<span class="at">paragraphs =</span> <span class="dv">1</span>, <span class="at">sentences =</span> <span class="dv">6</span>)</span>
+<span id="cb8-6"><a href="a-table-app.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-7"><a href="a-table-app.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb8-8"><a href="a-table-app.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column</span>(<span class="dv">10</span>, <span class="at">offset =</span> <span class="dv">1</span>, <span class="at">style =</span> <span class="st">&#39;background-color:red&#39;</span>, <span class="co"># &lt;==================</span></span>
+<span id="cb8-9"><a href="a-table-app.html#cb8-9" aria-hidden="true" tabindex="-1"></a>      DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb8-10"><a href="a-table-app.html#cb8-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-11"><a href="a-table-app.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-12"><a href="a-table-app.html#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p></br>
+</br>
+<img src="images/03_table_app/basic_table_04.png" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="add-a-graph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["notes_shiny.pdf", "notes_shiny.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
